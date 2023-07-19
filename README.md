@@ -43,42 +43,42 @@
 1. 장소 검색
    1. sample <br>```curl --location 'http://localhost:8080/search/places?keyword=카카오'```
    2. 기본 정보 
-   - |메서드| URL                                 |
-     |----|-------------------------------------|
-     | GET | http://localhost:8080/search/places | 
+   - |메서드|URL|
+     |----|----|
+     |GET|http://localhost:8080/search/places| 
    3. 쿼리 파라미터
-    - |이름|타입|설명| 필수 |
-      |--|--|--|--|
-      |keyword|String|검색을 원하는 키워드|O|
+   - |이름|타입|설명|필수|
+     |--|--|--|--|
+     |keyword|String|검색을 원하는 키워드|O|
    4. 응답 헤더
-   - | 이름 | 설명                                           | 필수   |
+   - |이름|설명|필수|
      |--------|----------------------------------------------|------|
-     | Content-type | 응답 데이터 타입<br> content-type: application/json | O |
+     |Content-type|응답 데이터 타입<br> content-type: application/json|O|
    5. 응답 본문
-   - | 이름          | 타입     | 설명        |
+   - |이름|타입|설명|
      |-------------|--------|-----------|
-     | title       | String | 장소명,업체명   |
-     | category    | String | 카테고리 이름   |
-     | address     | String | 전체 지번 주소  |
-     | roadAddress | String | 전체 도로명 주소 |
-     | tel         | String | 연락처       |
-     | link        | String | 장소 상세 URL |
+     |title|String|장소명,업체명|
+     |category|String|카테고리 이름|
+     |address| String | 전체 지번 주소  |
+     |roadAddress | String | 전체 도로명 주소 |
+     |tel|String|연락처|
+     |link|String|장소 상세 URL|
 
 2. 키워드 검색
     1. sample <br>```curl --location 'http://localhost:8080/keyword/ranks'```
     2. 기본 정보
-    - |메서드| URL                                 |
-           |----|-------------------------------------|
-      | GET | http://localhost:8080/keyword/ranks | 
+    - |메서드|URL|
+      |----|-------------------------------------|
+      |GET|http://localhost:8080/keyword/ranks| 
     3. 응답 헤더
-    - | 이름 | 설명                                                        | 필수   |
-           |--------|-----------------------------------------------------------|------|
-      | Content-type | 응답 데이터 타입<br> content-type: application/json | O |
+    - |이름|설명|필수|
+      |--------|-----------------------------------------------------------|------|
+      |Content-type|응답 데이터 타입<br> content-type: application/json|O|
     4. 응답 본문
-    - | 이름       | 타입     | 설명     |
+    - |이름|타입|설명|
       |----------|--------|--------|
-      | keyword  | String | 키워드    |
-      | count    | Long   | 검색 요청수 |
+      |keyword|String|키워드|
+      |count|Long|검색 요청수|
       
 
 
