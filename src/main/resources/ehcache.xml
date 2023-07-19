@@ -1,0 +1,48 @@
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
+
+    <!-- https://www.ehcache.org/documentation/3.3/xml.html -->
+
+
+
+    <cache alias="place:search:">
+        <value-type>java.util.List</value-type>
+        <expiry>
+            <!-- unit : nanos, micros, millis, seconds, minutes, hours, days -->
+            <ttl unit="days">1</ttl>
+        </expiry>
+
+        <listeners>
+            <listener>
+                <class>com.local.openapi.core.cache.EhCacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+            </listener>
+        </listeners>
+
+        <resources>
+            <heap unit="entries">1000</heap>
+        </resources>
+    </cache>
+
+<!--
+    * cache-template sample *
+
+    <cache-template name="myDefaults">
+        <key-type>java.lang.Long</key-type>
+        <value-type>java.lang.String</value-type>
+        <heap unit="entries">200</heap>
+    </cache-template>
+
+    <cache alias="bar" uses-template="myDefaults">
+        <key-type>java.lang.Number</key-type>
+    </cache>
+
+    <cache alias="simpleCache" uses-template="myDefaults" />
+-->
+
+</config>

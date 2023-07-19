@@ -1,0 +1,78 @@
+server:
+  port: 8080
+
+
+logging:
+  group:
+    app:
+      - com.local.openapi
+    database:
+      - org.springframework.data.redis
+      - org.springframework.orm.jpa
+      - org.springframework.transaction
+      - com.zaxxer.hikari.HikariConfig
+      - com.zaxxer.hikari
+      - org.springframework.jdbc
+
+spring:
+  application:
+    name: local-openapi
+  config:
+    import: classpath:/application-logging.yml
+  main:
+    banner-mode: off
+
+  profiles:
+    default: dev
+    group:
+      dev: logger-debug, logger-file
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:my;
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+      maximum-pool-size: 20
+      max-lifetime: 900000
+      connection-timeout: 30000
+      pool-name: my-hikari-pool
+      transaction-isolation: 1
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    database-platform: org.hibernate.dialect.H2Dialect
+
+application:
+  web-client:
+    kakao:
+      connect-timeout: 2000
+      read-timeout: 5000
+      response-timeout: 5000
+      write-timeout: 5000
+      host: https://dapi.kakao.com
+      apikey: 3d9a0bf7df7f8dc4b1af34ac6a899c09
+
+    naver:
+      connect-timeout: 2000
+      read-timeout: 5000
+      response-timeout: 5000
+      write-timeout: 5000
+      host: https://openapi.naver.com
+      id: TvxYztJCZJ_yvizvC3nS
+      secret: sywcNf_O4q

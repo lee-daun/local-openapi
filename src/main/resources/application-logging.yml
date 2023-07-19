@@ -1,0 +1,58 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: logger-debug
+
+    #jpa:
+      #properties:
+       #hibernate:
+         #show_sql: true
+         #format_sql: true
+         #use_sql_comments: true
+
+logging:
+  group:
+    connection:
+      - com.zaxxer.hikari.HikariConfig
+      - com.zaxxer.hikari
+      - org.springframework.orm.jpa.JpaTransactionManager
+      - com.microsoft.sqlserver.jdbc.internals
+
+  level:
+    root: WARN
+    app: INFO
+    #sql: DEBUG
+    #web: INFO
+    #database: DEBUG
+    #org.hibernate.type.descriptor.sql: TRACE
+    #org.springframework.cache: TRACE
+    reactor.netty.http.client: DEBUG
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: logger-file
+
+logging:
+  pattern:
+    rolling-file-name: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
+  file:
+    name: app/logs/application.log
+  logback:
+    rollingpolicy:
+      max-file-size: 1GB
+      max-history: 7
+  level:
+    root: WARN
+    app: INFO
+    #sql: DEBUG
+    #web: INFO
+    #database: DEBUG
+    #org.hibernate.type.descriptor.sql: TRACE
+    #org.springframework.cache: TRACE
+    reactor.netty.http.client: DEBUG
+
+
